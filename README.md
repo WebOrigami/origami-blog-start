@@ -1,3 +1,1 @@
 # origami-blog-starter
-
-Dang
