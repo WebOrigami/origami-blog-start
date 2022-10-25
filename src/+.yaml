@@ -12,16 +12,12 @@ html = mapDeep(inlined, mdHtml, '.md', '.html'):
 # folder, with the converted HTML fragements placed inside a site-wide page
 # template.
 
-mainIndex.html = page.ori(html/index.html):
-aboutIndex.html = page.ori(html/about/index.html):
 templatedPosts = map(html/posts, post.ori, '.html'):
-mergedPosts = merge(this, templatedPosts):
-  index.html = page.ori(html/posts.html):
-stylesAlias = styles.css:
 
 site = meta(this):
-  index.html = mainIndex.html:
+  index.html = page.ori(html/index.html):
   about:
-    index.html = aboutIndex.html:
-  posts = mergedPosts:
-  styles.css = stylesAlias:
+    index.html = page.ori(html/about/index.html):
+  posts = merge(templatedPosts, meta(this)):
+    index.html = page.ori(html/posts.html):
+  styles.css = src/styles.css:
