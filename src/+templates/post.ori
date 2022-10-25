@@ -1,0 +1,4 @@
+{{#page.ori}}
+<h1 class='postTitle'>{{ ./title }}</h1>
+{{ @text }}
+{{/page.ori}}

@@ -1,0 +1,27 @@
+# Create a virtual folder called `inlined` that's a deep copy of the `markdown`
+# folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
+# This lets individual markdown pages like markdown/index.md contain expressions
+# that do useful things, like embed a list of the blog posts.
+inlined = mapDeep(markdown, inline, '.md'):
+
+# Create a virtual folder called `html` that's a deep copy of the `inlined`
+# folder, with all markdown files converted to HTML fragments.
+html = mapDeep(inlined, mdHtml, '.md', '.html'):
+
+# Create a virtual folder called `templated` that's a deep copy of the `html`
+# folder, with the converted HTML fragements placed inside a site-wide page
+# template.
+
+mainIndex.html = page.ori(html/index.html):
+aboutIndex.html = page.ori(html/about/index.html):
+templatedPosts = map(html/posts, post.ori, '.html'):
+mergedPosts = merge(this, templatedPosts):
+  index.html = page.ori(html/posts.html):
+stylesAlias = styles.css:
+
+site = meta(this):
+  index.html = mainIndex.html:
+  about:
+    index.html = aboutIndex.html:
+  posts = mergedPosts:
+  styles.css = stylesAlias:

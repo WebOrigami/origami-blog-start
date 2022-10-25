@@ -1,0 +1,7 @@
+{{#map html/posts}}
+<li>
+  {{ ./date }}
+  —
+  <a href="/posts/{{ @key }}">{{ ./title }}</a>
+</li>
+{{/map}}

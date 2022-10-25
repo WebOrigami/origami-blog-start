@@ -1,0 +1,15 @@
+{
+  "name": "origami-blog-starter",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "@graphorigami/origami": "0.0.19"
+  },
+  "engines": {
+    "node": ">=16.6.1"
+  },
+  "scripts": {
+    "start": "ori serve virtual/src/site",
+    "build": "ori copy virtual/src/site, files/build"
+  }
+}
