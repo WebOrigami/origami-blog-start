@@ -8,16 +8,31 @@ inlined = mapDeep(markdown, inline, '.md'):
 # folder, with all markdown files converted to HTML fragments.
 html = mapDeep(inlined, mdHtml, '.md', '.html'):
 
-# Create a virtual folder called `templated` that's a deep copy of the `html`
-# folder, with the converted HTML fragements placed inside a site-wide page
-# template.
+# Regular pages sit at the top level of the virtual `html` folder.
+# Those pages are rendered with the `page.html` template.
+regularPages = map(html, page.ori):
 
-templatedPosts = map(html/posts, post.ori, '.html'):
+# The posts sit in the `posts` subfolder of the virtual `html` folder.
+posts = html/posts:
 
+# Sort the posts by date, which will end up with the oldest first.
+oldestFirst = sortBy(posts, =./date):
+
+# Reverse the order so the newest posts are first.
+newestFirst = reverse(oldestFirst):
+
+# Post pages use the `post.ori` template. To present posts with newest posts
+# first, change the `oldestFirst` below to `newestFirst`.
+postPages = map(oldestFirst, post.ori, '.html'):
+
+# Construct the final site. The structure of the object below reflects the
+# structure of the final site. The `meta` in the formula below lets Origami know
+# that the structure itself contains formulas that should be evaluated.
 site = meta(this):
-  index.html = page.ori(html/index.html):
+  index.html = regularPages/index.html:
   about:
-    index.html = page.ori(html/about/index.html):
-  posts = merge(templatedPosts, meta(this)):
-    index.html = page.ori(html/posts.html):
+    index.html = regularPages/about.html:
+  posts = merge(postPages, this):
+    index.html = regularPages/posts.html:
   styles.css = src/styles.css:
+  foo = 'xxx':

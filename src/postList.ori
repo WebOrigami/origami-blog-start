@@ -1,4 +1,4 @@
-{{#map html/posts}}
+{{#map postPages}}
 <li>
   {{ ./date }}
   —

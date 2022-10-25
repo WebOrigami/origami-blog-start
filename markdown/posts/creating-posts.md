@@ -10,7 +10,7 @@ The body of your posts will be in Markdown. With Glitch, you can edit Markdown r
 
 ### Post metadata
 
-Above the content of your posts, you'll include front matter that tells Eleventy about details like the title and date.
+Above the content of your posts, you'll include front matter that tells Graph Origami about details like the title and date.
 
 Any values you include in the front matter are accessible in the template (e.g. `_includes/layouts/post.njk`). The template can build this data into the HTML page along with your post content.
 
@@ -23,11 +23,8 @@ Add the following content to your new post, including the front matter and one l
 ```
 ---
 title: My First Blog Post
-description: Writing my first post on my new Eleventy blog
+description: Writing my first post on my new Graph Origami blog
 date: 2030-01-01
-tags:
-  - posts
-layout: layouts/post.njk
 ---
 
 OMG this is my first post!

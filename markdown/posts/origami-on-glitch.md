@@ -1,14 +1,14 @@
 ---
-title: Getting started with Eleventy on Glitch!
+title: Getting started with Graph Origami on Glitch!
 description: You won't believe how easy it can be
 date: 2021-02-03
 ---
 
-Congrats! You've launched a beautiful new Eleventy-powered blog on Glitch.
+Congrats! You've launched a beautiful new Graph Origami-powered blog on Glitch.
 
 In the **README** you'll find an overview of the files that make up the project, and when you open the files in the editor you'll see comments explaining what's happening.
 
-Your Eleventy blog contains three pages:
+Your Graph Origami blog contains three pages:
 
 - Home–the intro page which also lists recent posts
 - Posts–a list of all posts
