@@ -13,10 +13,8 @@ html = mapDeep(inlined, mdHtml, extension='md→html'):
 regularPages = map(html, page.ori):
 
 # The posts sit in the `posts` subfolder of the virtual `html` folder.
-posts = html/posts:
-
 # Sort the posts by date, which will end up with the oldest first.
-oldestFirst = sortBy(posts, =./date):
+oldestFirst = sortBy(html/posts, =./date):
 
 # Reverse the order so the newest posts are first.
 newestFirst = reverse(oldestFirst):
