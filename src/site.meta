@@ -2,11 +2,11 @@
 # folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
 # This lets individual markdown pages like markdown/index.md contain expressions
 # that do useful things, like embed a list of the blog posts.
-inlined = mapDeep(markdown, inline, '.md'):
+inlined = mapDeep(markdown, inline, extension='md'):
 
 # Create a virtual folder called `html` that's a deep copy of the `inlined`
 # folder, with all markdown files converted to HTML fragments.
-html = mapDeep(inlined, mdHtml, '.md', '.html'):
+html = mapDeep(inlined, mdHtml, extension='md→html'):
 
 # Regular pages sit at the top level of the virtual `html` folder.
 # Those pages are rendered with the `page.html` template.
@@ -23,16 +23,15 @@ newestFirst = reverse(oldestFirst):
 
 # Post pages use the `post.ori` template. To present posts with newest posts
 # first, change the `oldestFirst` below to `newestFirst`.
-postPages = map(oldestFirst, post.ori, '.html'):
+postPages = map(oldestFirst, post.ori, extension='html'):
 
 # Construct the final site. The structure of the object below reflects the
 # structure of the final site. The `meta` in the formula below lets Origami know
 # that the structure itself contains formulas that should be evaluated.
-site = meta(this):
+site:
   index.html = regularPages/index.html:
   about:
     index.html = regularPages/about.html:
   posts = merge(postPages, this):
     index.html = regularPages/posts.html:
   styles.css = src/styles.css:
-  foo = 'xxx':

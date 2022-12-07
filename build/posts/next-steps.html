@@ -11,20 +11,11 @@
       <div class="wrapper">
         <div class="content">
           <h1 class='postTitle'>Next Steps</h1>
-<p>Earlier you added a new post and it appeared at the end of the list–if you’re keeping a blog you probably want newer posts to appear first! Let’s tweak the Eleventy config and use this to learn how you can customize your site build.</p>
+<p>Earlier you added a new post and it appeared at the end of the list–if you’re keeping a blog you probably want newer posts to appear first! Let’s customize your site.</p>
 <h3 id="change-the-order-of-posts">Change the order of posts</h3>
 <p>Open any of the blog posts in <code>/posts</code>. In the front matter, each one has a <code>date</code> property we can use to specify the order posts appear in the site.</p>
-<p>Take a look in <code>.eleventy.js</code>–there’s some config in there that determines how your site builds and functions. Scroll down to the section that starts <code>eleventyConfig.addCollection</code>. This is where the site builds the collection of blog posts your users will be able to navigate and read.</p>
-<p>The first line inside the function creates the collection of posts by filtering on the “posts” tag included in each one:</p>
-<pre><code>const coll = collection
-      .getFilteredByTag(&quot;posts&quot;);
-</code></pre>
-<p>Alter this line to sort the posts using the <code>date</code> property in the front matter (find the comment that includes <code>EDIT HERE</code>):</p>
-<pre><code>const coll = collection
-      .getFilteredByTag(&quot;posts&quot;)
-      .sort((a, b) =&gt; b.data.date - a.data.date);
-</code></pre>
-<p>The rest of the code in the function sets the posts up to point to each other so that the reader can progress through them.</p>
+<p>Take a look in <code>src/+.yaml</code> – there’s a formula in there that determines how your site builds and functions. Scroll down to the formula that starts <code>oldestFirst=</code>. This is where the site sorts the collection of blog posts by date.</p>
+<p>If you’d like posts to appear with <em>newest</em> posts first, a few lines below, edit the formula that starts <code>postPages=</code>. Change the <code>oldestFirst</code> to <code>newestFirst</code>.</p>
 <p>Take a look at the Home or Posts page in the preview!</p>
 
 
