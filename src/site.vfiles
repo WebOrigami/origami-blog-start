@@ -9,7 +9,7 @@ inlined = mapDeep(markdown, inline, extension='md'):
 html = mapDeep(inlined, mdHtml, extension='md→html'):
 
 # Regular pages sit at the top level of the virtual `html` folder.
-# Those pages are rendered with the `page.html` template.
+# Those pages are rendered with the page.ori template.
 regularPages = map(html, page.ori):
 
 # The posts sit in the `posts` subfolder of the virtual `html` folder.
@@ -19,14 +19,12 @@ oldestFirst = sortBy(html/posts, =./date):
 # Reverse the order so the newest posts are first.
 newestFirst = reverse(oldestFirst):
 
-# Post pages use the `post.ori` template. To present posts with newest posts
-# first, change the `oldestFirst` below to `newestFirst`.
-postPages = map(oldestFirst, post.ori, extension='html'):
+# Post pages use the postPage.ori template to become HTML. To show newest posts
+# first, change `oldestFirst` below to `newestFirst`.
+postPages = map(oldestFirst, postPage.ori, extension='html'):
 
-# Construct the final site. The structure of the object below reflects the
-# structure of the final site. The `meta` in the formula below lets Origami know
-# that the structure itself contains formulas that should be evaluated.
-site:
+# The virtual `public` folder is the final site.
+public:
   index.html = regularPages/index.html:
   about:
     index.html = regularPages/about.html:
