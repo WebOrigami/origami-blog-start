@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@graphorigami/origami": "0.0.19"
+    "@graphorigami/origami": "github:GraphOrigami/origami#3b8dd20b"
   },
   "engines": {
     "node": ">=16.6.1"
