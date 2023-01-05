@@ -1,8 +1,8 @@
 ---
-next = nextKey(sorted, @key):
-nextTitle = sorted/(next)/title:
-previous = previousKey(sorted, @key):
-previousTitle = sorted/(previous)/title:
+next = nextKey(postsByDate, @key):
+nextTitle = postsByDate/(next)/title:
+previous = previousKey(postsByDate, @key):
+previousTitle = postsByDate/(previous)/title:
 ---
 {{page.ori `
 <h1 class='postTitle'>{{ title }}</h1>

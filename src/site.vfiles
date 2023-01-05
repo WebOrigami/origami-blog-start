@@ -14,13 +14,15 @@ regularPages = map(html, page.ori):
 
 # The posts sit in the `posts` subfolder of the virtual `html` folder.
 # Sort the posts by date, which will end up with the oldest first.
-sorted = sortBy(html/posts, =./date):
-
-# Alternatively, reverse the order so the newest posts are first.
-# sorted = reverse(sortBy(html/posts, =./date)):
+postsByDate = sortBy(html/posts, =date):
 
 # Post pages use the postPage.ori template for the complete HTML.
-postPages = map(sorted, postPage.ori, extension='html'):
+postPages = map(postsByDate, postPage.ori, extension='html'):
+
+# The display order used in lists of posts. If you want the newest posts
+# listed first, comment out the first formula and uncomment the second.
+# displayOrder = postsByDate:
+displayOrder = reverse(postsByDate):
 
 # The virtual `public` folder is the final site.
 public:

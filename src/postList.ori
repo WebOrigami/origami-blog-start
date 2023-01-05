@@ -1,4 +1,4 @@
-{{map postPages, =`
+{{map displayOrder, =`
 <li>
   {{ ./date }}
   —
