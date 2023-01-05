@@ -21,8 +21,8 @@ postPages = map(postsByDate, postPage.ori, extension='html'):
 
 # The display order used in lists of posts. If you want the newest posts
 # listed first, comment out the first formula and uncomment the second.
-# displayOrder = postsByDate:
-displayOrder = reverse(postsByDate):
+displayOrder = postsByDate:
+# displayOrder = reverse(postsByDate):
 
 # The virtual `public` folder is the final site.
 public:
