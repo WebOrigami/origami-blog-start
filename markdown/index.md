@@ -1,3 +1,7 @@
+<div class="illo-container">
+  <img src="/assets/bird.svg" class="illustration" style="transform: none" alt="Graph Origami">
+</div>
+
 # Hello Graph Origami!
 
 Welcome to the Glitch [Graph Origami](https://graphorigami.org) starter, where you can create a blog or landing page that generates a static site.

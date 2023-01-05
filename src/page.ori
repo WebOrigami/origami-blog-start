@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Your new Graph Origami blog" />
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
+    <title>{{ title }}</title>
+{{ seo.ori() }}
   </head>
   <body>
     <main>    

@@ -1,3 +1,9 @@
+# Templates use the following global variables.
+# Update these with your own values.
+title: Hello Graph Origami!
+description: A simple Graph Origami blog, built with Glitch. Remix to get your own.
+canonicalHref: https://origami-blog-starter.glitch.me/
+
 # Create a virtual folder called `inlined` that's a deep copy of the `markdown`
 # folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
 # This lets individual markdown pages like markdown/index.md contain expressions
@@ -26,9 +32,9 @@ displayOrder = postsByDate:
 
 # The virtual `public` folder is the final site.
 public:
-  index.html = regularPages/index.html:
+  assets = src/assets:
   about:
     index.html = regularPages/about.html:
+  index.html = regularPages/index.html:
   posts = merge(postPages, this):
     index.html = regularPages/posts.html:
-  styles.css = src/styles.css:

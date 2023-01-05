@@ -1,0 +1,7 @@
+    <meta name="description" content="{{ description }}">
+    <link rel="canonical" href="{{ canonicalHref }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ canonicalHref }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="{{ canonicalHref }}/assets/bird.png">
