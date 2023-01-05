@@ -1,6 +1,6 @@
 # Hello Graph Origami!
 
-This project is a blog powered by [Graph Origami](https://graphorigami.org), a lightweight static site generator. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
+This project is a blog powered by [Graph Origami](https://graphorigami.org), a static site generator. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
 
 _While you're working on the content in the editor your changes will happen ✨ immediately in the preview window. As you code the site is serving files from a local build directory. When you close the editor your site will run a `build` script then serve the output as a fast and always-on static site._
 
@@ -14,11 +14,11 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ← `public/style.css`: The styling rules for your pages and posts.
 
-← `.eleventy.js`: Here you can configure how Eleventy builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
+← `site.vfiles`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
 
-← `package.json`: Your project's dependencies, where you will also find the start command to run eleventy.
+← `package.json`: Your project's dependencies, where you will also find the start command to run the Graph Origami server or build the static files.
 
-← `src/`: This folder contains all the files Eleventy will use to build your site.
+← `src/`: This folder contains all the files Graph Origami will use to build your site.
 
 ### Working in the `src/` folder 📁
 
@@ -26,19 +26,9 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ← `posts/`: These are the Markdown files for the posts that make up your blog–you can add new posts here and remove any you don't want. Each one includes front matter that Eleventy uses to build the content into the site, passing the data into the template referenced as `layout` at the top of the file.
 
-← `_includes/layouts/`: This is where all of your page level layouts go. The **\_** tells you that this is an _eleventy only_ folder. Each layout uses [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to build the page or post data into an HTML page. There is one base layout that all others extend.
-
-← `seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
-
-**_Want a basic template version of this project to build your own Eleventy app? Check out [Minimal Eleventy](https://glitch.com/edit/#!/remix/11ty)!_**
-
 ## Try this next 🏗️
 
-With the site preview open on the right and the Glitch editor open on the left, navigate through the initial blog posts to learn more and carry out some development on your Eleventy site!
-
-Your site can use incremental builds, so if for example you only change a markdown file, Glitch would just rewrite the relevant page instead of rebuilding the whole site–to enable this, change your `package.json` `start` command to `eleventy --incremental --serve`.
-
-_When you add or delete a file and your preview does not update straight away on refresh, you can enter `eleventy --serve` in your project terminal to force a rewrite._
+With the site preview open on the right and the Glitch editor open on the left, navigate through the initial blog posts to learn more and carry out some development on your Graph Origami site!
 
 Check out `TODO.md` for some more optional next steps.
 
