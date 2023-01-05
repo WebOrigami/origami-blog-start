@@ -17,6 +17,6 @@ Your Graph Origami blog contains three pages:
 Each blog post lives in the `posts` folder–take a look at one by opening it in the editor.
 
 - Posts use [Markdown](https://www.markdownguide.org/cheat-sheet/) (`.md`) syntax, which is more lightweight to write and read than HTML
-- Each post contains **front matter** defining metdata such as the date, title, and layout
+- Each post contains **front matter** defining metdata such as the date, and title.
 
-Layouts for your site are in `_includes`–your pages and posts can use these to define an outline structure their content is containined within.
+Templates for your site are in `src`.

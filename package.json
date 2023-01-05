@@ -9,7 +9,7 @@
     "node": ">=16.6.1"
   },
   "scripts": {
-    "start": "ori serve virtual/src/site.vfiles/public",
+    "start": "ori serve watch src, =defaultPages site.vfiles/public",
     "build": "ori copy virtual/src/site.vfiles/public, files/build"
   }
 }

@@ -1,7 +1,7 @@
-{{#map postPages}}
+{{map postPages, =`
 <li>
   {{ ./date }}
   —
   <a href="/posts/{{ @key }}">{{ ./title }}</a>
 </li>
-{{/map}}
+`}}
