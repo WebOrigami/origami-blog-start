@@ -16,7 +16,7 @@ html = mapDeep(inlined, mdHtml, extension='md→html'):
 
 # Regular pages sit at the top level of the virtual `html` folder.
 # Those pages are rendered with the page.ori template.
-regularPages = map(html, page.ori):
+regularPages = map(html, page.ori, extension='html' extensionMatchesOnly=true):
 
 # The posts sit in the `posts` subfolder of the virtual `html` folder.
 # Sort the posts by date, which will end up with the oldest first.
