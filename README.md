@@ -1,3 +1,5 @@
+_Note: The goal of this project is to take a simple blog created in the Eleventy static site generator and rewrite it in Graph Origami. This project copies the original [Hello Eleventy](https://glitch.com/edit/#!/glitch-hello-eleventy) blog starter project, preserving its visual design and blog content, changing only what is necessary to make the blog work in Graph Origami. The crux of the Eleventy blog project is its `.eleventy.js` configuration script; here, the crux is the set of virtual files defined in `src/site.vfiles`._
+
 # Hello Graph Origami!
 
 This project is a blog powered by [Graph Origami](https://graphorigami.org), a static site generator. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
@@ -12,15 +14,15 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
 
-← `public/style.css`: The styling rules for your pages and posts.
+← `src/`: This folder contains all the files Graph Origami will use to build your site.
 
-← `site.vfiles`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
+← `src/assets/style.css`: The styling rules for your pages and posts.
+
+← `src/site.vfiles`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
 
 ← `package.json`: Your project's dependencies, where you will also find the start command to run the Graph Origami server or build the static files.
 
-← `src/`: This folder contains all the files Graph Origami will use to build your site.
-
-### Working in the `src/` folder 📁
+### Working in the `markdown/` folder 📁
 
 ← `index.md`, `posts.md`, `about.md`: These Markdown files include the content for your Home, Posts, and About pages.
 
