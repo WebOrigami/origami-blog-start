@@ -4,21 +4,21 @@ nextTitle = postsByDate/(next)/title:
 previous = previousKey(postsByDate, @key):
 previousTitle = postsByDate/(previous)/title:
 ---
-{{page.ori `
-<h1 class='postTitle'>{{ title }}</h1>
+{{ page.ori(`
+<h1 class='postTitle'>{{ ./title }}</h1>
 {{ @text }}
 <div class="controls">
-  {{if previous, =`
+  {{ if(previous, =`
   <p>
     <strong>Previous post</strong>: 
     <a class="previous" href="{{ previous }}">{{ previousTitle }}</a>
   </p>
-  `}}
-  {{if next, =`
+  `) }}
+  {{ if(next, =`
   <p>
     <strong>Next post</strong>: 
     <a class="next" href="{{ next }}">{{ nextTitle }}</a>
   </p>
-  `}}
+  `) }}
 </div>
-`}}
+`) }}
