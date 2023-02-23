@@ -1,12 +1,12 @@
 ---
-next = nextKey(postsByDate, @key):
-nextTitle = postsByDate/(next)/title:
-previous = previousKey(postsByDate, @key):
-previousTitle = postsByDate/(previous)/title:
+next: !ori nextKey(postsByDate, @key)
+nextTitle: !ori postsByDate/(next)/title
+previous: !ori previousKey(postsByDate, @key)
+previousTitle: !ori postsByDate/(previous)/title
 ---
 {{ page.ori(`
-<h1 class='postTitle'>{{ ./title }}</h1>
-{{ @text }}
+<h1 class='postTitle'>{{ title }}</h1>
+{{ @input }}
 <div class="controls">
   {{ if(previous, =`
   <p>

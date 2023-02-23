@@ -11,7 +11,7 @@
     <main>    
       <div class="wrapper">
         <div class="content">
-          {{ @text }}
+          {{ @input }}
         </div>
       </div>
       <footer class="footer">
