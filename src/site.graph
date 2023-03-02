@@ -1,29 +1,29 @@
 # Templates use the following global variables.
 # Update these with your own values.
-title = 'Hello Graph Origami!'
-description = 'A simple Graph Origami blog, built with Glitch. Remix to get your own.'
-canonicalHref = 'https://origami-blog-starter.glitch.me/'
+title = "Hello Graph Origami!"
+description = "A simple Graph Origami blog, built with Glitch. Remix to get your own."
+canonicalHref = "https://origami-blog-starter.glitch.me/"
 
-# Create a virtual folder called `inlined` that's a deep copy of the `markdown`
+# Create a virtual folder called `inlined` that"s a deep copy of the `markdown`
 # folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
 # This lets individual markdown pages like markdown/index.md contain expressions
 # that do useful things, like embed a list of the blog posts.
-inlined = mapDeep(markdown, =inline(@value), { extension: 'md' })
+inlined = mapDeep(markdown, =inline(@value), { extension: "md" })
 
-# Create a virtual folder called `html` that's a deep copy of the `inlined`
+# Create a virtual folder called `html` that"s a deep copy of the `inlined`
 # folder, with all markdown files converted to HTML fragments.
-html = mapDeep(inlined, =mdHtml(@value), { extension: 'md→html' })
+html = mapDeep(inlined, =mdHtml(@value), { extension: "md→html" })
 
 # Regular pages sit at the top level of the virtual `html` folder.
 # Those pages are rendered with the page.ori template.
-regularPages = map(html, page.ori, { extension: 'html', extensionMatchesOnly: true })
+regularPages = map(html, page.ori, { extension: "html", extensionMatchesOnly: true })
 
 # The posts sit in the `posts` subfolder of the virtual `html` folder.
 # Sort the posts by date, which will end up with the oldest first.
 postsByDate = sortBy(html/posts, =date)
 
 # Post pages use the postPage.ori template for the complete HTML.
-postPages = map(postsByDate, postPage.ori, { extension: 'html' })
+postPages = map(postsByDate, postPage.ori, { extension: "html" })
 
 # The display order used in lists of posts. If you want the newest posts
 # listed first, comment out the first formula and uncomment the second.
