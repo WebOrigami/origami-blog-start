@@ -2,7 +2,7 @@
 # Update these with your own values.
 title = "Hello Graph Origami!"
 description = "A simple Graph Origami blog, built with Glitch. Remix to get your own."
-canonicalHref = "https://origami-blog-starter.glitch.me/"
+customDomain = "https://origami-blog-starter.glitch.me/"
 
 # Create a virtual folder called `inlined` that"s a deep copy of the `markdown`
 # folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
