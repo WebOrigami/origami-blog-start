@@ -1,20 +1,20 @@
 ---
-next: !ori nextKey(postsByDate, @key)
-nextTitle: !ori postsByDate/(next)/title
-previous: !ori previousKey(postsByDate, @key)
-previousTitle: !ori postsByDate/(previous)/title
+next: !ori (@graph/nextKey(postsByDate, @key))
+nextTitle: !ori postsByDate(next)/title
+previous: !ori (@graph/previousKey(postsByDate, @key))
+previousTitle: !ori postsByDate(previous)/title
 ---
 {{ page.ori(`
 <h1 class='postTitle'>{{ title }}</h1>
 {{ @input }}
 <div class="controls">
-  {{ if(previous, =`
+  {{ @if(previous, =`
   <p>
     <strong>Previous post</strong>: 
     <a class="previous" href="{{ previous }}">{{ previousTitle }}</a>
   </p>
   `) }}
-  {{ if(next, =`
+  {{ @if(next, =`
   <p>
     <strong>Next post</strong>: 
     <a class="next" href="{{ next }}">{{ nextTitle }}</a>

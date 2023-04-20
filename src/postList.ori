@@ -1,4 +1,4 @@
-{{ map(displayOrder, =`
+{{ @map/values(displayOrder, =`
 <li>
   {{ date }}
   —
