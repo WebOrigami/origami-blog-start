@@ -4,40 +4,38 @@ title = "Hello Graph Origami!"
 description = "A simple Graph Origami blog, built with Glitch. Remix to get your own."
 customDomain = "https://origami-blog-starter.glitch.me/"
 
-# Create a virtual folder called `inlined` that"s a deep copy of the `markdown`
+# Create a virtual folder called `inlined` that's a deep copy of the `basic`
 # folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
 # This lets individual markdown pages like markdown/index.md contain expressions
 # that do useful things, like embed a list of the blog posts.
-inlined = @map/values(markdown, =@inline(@value), { deep: @true, extension: "md" })
+basicInlined = @map/values(basic, =@inline(@value), { deep: @true })
 
 # Create a virtual folder called `html` that"s a deep copy of the `inlined`
 # folder, with all markdown files converted to HTML fragments.
-html = @map/values(inlined, =@mdHtml(@value), { deep: @true, extension: "md→html" })
+basicHtml = @map/values(basicInlined, =@mdHtml(@value), { deep: @true, extension: "md→html" })
 
-# Regular pages sit at the top level of the virtual `html` folder.
-# Those pages are rendered with the page.ori template.
-regularPages = @map/values(html, page.ori, { extension: "html", extensionMatchesOnly: true })
+# Render the basic pages are rendered with the page.ori template.
+basicPages = @map/values(basicHtml, page.ori, { deep: @true })
 
-# The posts sit in the `posts` subfolder of the virtual `html` folder.
-# Sort the posts by date, which will end up with the oldest first.
-postsByDate = @graph/sort(html/posts, =date)
+# The posts sit in the `posts` folder.
+postHtml = @map/values(posts, =@mdHtml(@value), { extension: "md→html" })
 
 # Post pages use the postPage.ori template for the complete HTML.
-postPages = @map/values(postsByDate, postPage.ori, { extension: "html" })
+postPages = @map/values(postHtml, postPage.ori)
+
+# Sort the posts by date, which will end up with the oldest first. We sort the
+# keys in postHtml and not postPages, because the latter's template references
+# the display order, which references postsByDate and would therefore create a
+# circular reference.
+postsByDate = @graph/sort(postHtml, =date)
 
 # The display order used in lists of posts. If you want the newest posts
 # listed first, comment out the first formula and uncomment the second.
 displayOrder = postsByDate
-# displayOrder = reverse(postsByDate)
+# displayOrder = reverse(postPages)
 
 # The virtual `public` folder is the final site.
-public = {
-  about = {
-    index.html = regularPages/about.html
-  }
+public = @graph/mergeDeep(basicPages, {
   assets
-  index.html = regularPages/index.html
-  posts = @graph/merge(postPages, {
-    index.html = regularPages/posts.html
-  })
-}
+  posts = postPages
+})

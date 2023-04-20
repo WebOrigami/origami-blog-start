@@ -11,6 +11,6 @@ Each of the initial blog posts has special tips to help you get the most out of 
 ### Posts
 
 <ul>
-{{ postList.ori() }}
+  {{ postList.ori() }}
   <li><a href="/posts">View all posts</a></li>
 </ul>
