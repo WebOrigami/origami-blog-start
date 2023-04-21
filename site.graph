@@ -7,12 +7,20 @@ customDomain = "https://origami-blog-starter.glitch.me/"
 # Create the HTML bodies for the pages. We first inline any expressions in {{…}}
 # curly braces. This lets individual markdown pages like index.md create a list
 # of links to the posts. We then convert the markdown to HTML.
-bodies = @map/values(content, =@mdHtml(@inline(@value)), { deep: @true, extension: "md→html" })
+bodies = @map/values(
+  content,
+  =@mdHtml(@inline(@value)),
+  { deep: @true, extension: "md→html" }
+)
 
 # Render the page bodies with a template. If the page has a `template` property,
 # use that, otherwise use the postPage.ori template. This arrangement avoids the
 # need to specify the template for every post.
-pages = @map/values(bodies, =@if(template, template, templates/postPage.ori)(@value), { deep: @true, extension: "html" })
+pages = @map/values(
+  bodies,
+  =@or(template, templates/postPage.ori)(@value),
+  { deep: @true, extension: "html" }
+)
 
 # We store the posts index outside of the posts folder because it shouldn't
 # appear in lists of posts.
@@ -23,10 +31,12 @@ public = @graph/mergeDeep(pages, {
 })
 
 # Sort the posts by date. By default, we'll sort the oldest first. We sort the
-# keys in bodies/posts and not pages/posts, because the post template used by
-# the latter references this displayOrder (for next/previous links) and so that
-# would create a circular reference.
-#
-# To list newest posts first: comment out first formula, uncomment the second.
-displayOrder = @graph/sort(bodies/posts, =date)
-# displayOrder = @graph/reverse(@graph/sort(bodies/posts, =date))
+# keys in bodies/posts and not pages/posts, because the post template references
+# the displayOrder below, which references postsByDate and would therefore
+# create a circular reference.
+postsByDate = @graph/sort(bodies/posts, =date)
+
+# The display order used in lists of posts. If you want the newest posts listed
+# first, comment out the first formula and uncomment the second.
+displayOrder = postsByDate
+# displayOrder = reverse(postPages)
