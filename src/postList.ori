@@ -1,7 +1,0 @@
-{{ @map/values(displayOrder, =`
-<li>
-  {{ date }}
-  —
-  <a href="/posts/{{ @key }}">{{ title }}</a>
-</li>
-`) }}

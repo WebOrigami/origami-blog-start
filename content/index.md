@@ -1,3 +1,7 @@
+---
+template: !ori templates/page.ori
+---
+
 <div class="illo-container">
   <img src="/assets/bird.svg" class="illustration" style="transform: none" alt="Graph Origami">
 </div>
@@ -11,6 +15,6 @@ Each of the initial blog posts has special tips to help you get the most out of 
 ### Posts
 
 <ul>
-  {{ postList.ori() }}
+  {{ templates/postList.ori() }}
   <li><a href="/posts">View all posts</a></li>
 </ul>

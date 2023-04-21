@@ -1,0 +1,7 @@
+{{ @map/values(displayOrder, =@if(@not(@equals(@key, "index.html")), `
+<li>
+  {{ date }}
+  —
+  <a href="/posts/{{ @key }}">{{ title }}</a>
+</li>
+`)) }}

@@ -4,7 +4,7 @@ nextTitle: !ori postsByDate(next)/title
 previous: !ori (@graph/previousKey(postsByDate, @key))
 previousTitle: !ori postsByDate(previous)/title
 ---
-{{ page.ori(`
+{{ templates/page.ori(`
 <h1 class='postTitle'>{{ title }}</h1>
 {{ @input }}
 <div class="controls">

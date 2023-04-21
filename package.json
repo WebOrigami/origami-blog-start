@@ -13,7 +13,7 @@
     "projectType": "generated_static"
   },
   "scripts": {
-    "start": "ori @serve @watch src, =@debug site.graph/public",
-    "build": "ori @copy src/site.graph/public, @files/build"
+    "start": "ori @serve @watch ., =@debug site.graph/public",
+    "build": "ori @copy site.graph/public, @files/build"
   }
 }
