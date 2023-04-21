@@ -1,4 +1,4 @@
-_Note: The goal of this project is to take a simple blog created in the Eleventy static site generator and rewrite it in Graph Origami. This project copies the original [Hello Eleventy](https://glitch.com/edit/#!/glitch-hello-eleventy) blog starter project, preserving its visual design and blog content, changing only what is necessary to make the blog work in Graph Origami. The crux of the Eleventy blog project is its `.eleventy.js` configuration script; here, the crux is the set of virtual files defined in `src/site.vfiles`._
+_Note: The goal of this project is to take a simple blog created in the Eleventy static site generator and rewrite it in Graph Origami. This project copies the original [Hello Eleventy](https://glitch.com/edit/#!/glitch-hello-eleventy) blog starter project, preserving its visual design and blog content, changing only what is necessary to make the blog work in Graph Origami. The crux of the Eleventy blog project is its `.eleventy.js` configuration script; here, the crux is the set of virtual files defined in `src/site.graph`._
 
 # Hello Graph Origami!
 
@@ -18,7 +18,7 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ← `src/assets/style.css`: The styling rules for your pages and posts.
 
-← `src/site.vfiles`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
+← `src/site.graph`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
 
 ← `package.json`: Your project's dependencies, where you will also find the start command to run the Graph Origami server or build the static files.
 
