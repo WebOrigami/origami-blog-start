@@ -4,23 +4,18 @@ title = "Hello Graph Origami!"
 description = "A simple Graph Origami blog, built with Glitch. Remix to get your own."
 customDomain = "https://origami-blog-starter.glitch.me/"
 
-# Create a virtual folder called `inlined` that's a deep copy of the `content`
-# folder, with any expressions in {{ ... }} curly braces evaluated and inlined.
-# This lets individual markdown pages like content/index.md contain expressions
-# that do useful things, like embed a list of the blog posts.
-inlined = @map/values(content, =@inline(@value), { deep: @true, extension: "md" })
-
-# Create a virtual folder called `bodies` that"s a deep copy of the `inlined`
-# folder, with all markdown files converted to HTML fragments.
-bodies = @map/values(inlined, =@mdHtml(@value), { deep: @true, extension: "md→html" })
+# Create the HTML bodies for the pages. We first inline any expressions in {{…}}
+# curly braces. This lets individual markdown pages like index.md create a list
+# of links to the posts. We then convert the markdown to HTML.
+bodies = @map/values(content, =@mdHtml(@inline(@value)), { deep: @true, extension: "md→html" })
 
 # Render the page bodies with a template. If the page has a `template` property,
 # use that, otherwise use the postPage.ori template. This arrangement avoids the
 # need to specify the template for every post.
 pages = @map/values(bodies, =@if(template, template, templates/postPage.ori)(@value), { deep: @true, extension: "html" })
 
-# We store the posts index outside of the posts folder because it uses a
-# different template and should not appear in lists of posts.
+# We store the posts index outside of the posts folder because it shouldn't
+# appear in lists of posts.
 public = @graph/mergeDeep(pages, {
   posts = {
     index.html = pages/posts.html
@@ -31,9 +26,8 @@ public = @graph/mergeDeep(pages, {
 # keys in bodies/posts and not public/posts, because the post template references
 # the display order, which references postsByDate and would therefore create a
 # circular reference.
-postsByDate = @graph/sort(bodies/posts, =date)
-
-# The display order used in lists of posts. If you want the newest posts listed
+#
+# If you want the newest posts listed
 # first, comment out the first formula and uncomment the second.
-displayOrder = postsByDate
-# displayOrder = reverse(postPages)
+displayOrder = @graph/sort(bodies/posts, =date)
+# displayOrder = @graph/reverse(@graph/sort(bodies/posts, =date))
