@@ -23,11 +23,10 @@ public = @graph/mergeDeep(pages, {
 })
 
 # Sort the posts by date. By default, we'll sort the oldest first. We sort the
-# keys in bodies/posts and not public/posts, because the post template references
-# the display order, which references postsByDate and would therefore create a
-# circular reference.
+# keys in bodies/posts and not pages/posts, because the post template used by
+# the latter references this displayOrder (for next/previous links) and so that
+# would create a circular reference.
 #
-# If you want the newest posts listed
-# first, comment out the first formula and uncomment the second.
+# To list newest posts first: comment out first formula, uncomment the second.
 displayOrder = @graph/sort(bodies/posts, =date)
 # displayOrder = @graph/reverse(@graph/sort(bodies/posts, =date))
