@@ -22,8 +22,11 @@ pages = @map/values(
   { deep: @true, extension: "html" }
 )
 
+# Define the overall public site.
+#
 # We store the posts index outside of the posts folder because it shouldn't
-# appear in lists of posts.
+# appear in lists of posts. Here we merge the posts index into the public graph
+# as posts/index.html so that someone visiting posts/ will see the index.
 public = @graph/mergeDeep(pages, {
   posts = {
     index.html = pages/posts.html
@@ -39,4 +42,4 @@ postsByDate = @graph/sort(bodies/posts, =date)
 # The display order used in lists of posts. If you want the newest posts listed
 # first, comment out the first formula and uncomment the second.
 displayOrder = postsByDate
-# displayOrder = reverse(postPages)
+# displayOrder = @graph/reverse(postsByDate)
