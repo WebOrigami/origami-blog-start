@@ -1,0 +1,42 @@
+{
+  # Create the HTML fragments for the pages. We first inline any expressions in
+  # {{…}} curly braces. This lets individual markdown pages like index.md create
+  # a list of links to the posts. We then convert the markdown to HTML fragments.
+  bodies = @tree/map({
+    deep: @true
+    extensions: "md→html"
+    source: content
+    valueMap: =@mdHtml(@inline(_))
+  })
+
+  # Define the overall public site.
+  public = {
+    assets
+
+    index.html = page.orit(bodies/index.html)
+    about = {
+      index.html = page.orit(bodies/about.html)
+    }
+
+    # We store the posts index outside of the posts folder because it shouldn't
+    # appear in lists of posts. Merge the posts index into the public graph as
+    # posts/index.html so that someone visiting posts/ will see the index.
+    posts = @tree/merge(
+      {
+        index.html = page.orit(bodies/posts.html)
+      }
+      @tree/map(postPage.orit)(bodies/posts)
+    )
+  }
+
+  # Sort the posts by date. By default, we'll sort the oldest first. We sort the
+  # keys in bodies/posts and not pages/posts, because the post template references
+  # the displayOrder below, which references postsByDate and would therefore
+  # create a circular reference.
+  postsByDate = @tree/sortBy(bodies/posts, =_/date)
+
+  # The display order used in lists of posts. If you want the newest posts listed
+  # first, comment out the first formula and uncomment the second.
+  displayOrder = postsByDate
+  # displayOrder = @tree/reverse(postsByDate)
+}

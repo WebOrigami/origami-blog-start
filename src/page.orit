@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
     <title>{{ @or(_/title, "Hello Graph Origami!") }}</title>
-{{ templates/seo.orit() }}
+{{ seo.orit() }}
   </head>
   <body>
     <main>    

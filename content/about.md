@@ -1,7 +1,3 @@
----
-template: !ori templates/page.orit
----
-
 ## About this site
 
 Here you can write some details about you and your new blog:

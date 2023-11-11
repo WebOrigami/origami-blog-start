@@ -1,0 +1,27 @@
+---
+next: !ori (@tree/nextKey(postsByDate, @key))
+nextTitle: !ori postsByDate(next)/title
+postsByDate: !ori site.ori/postsByDate
+previous: !ori (@tree/previousKey(postsByDate, @key))
+previousTitle: !ori postsByDate(previous)/title
+---
+{{ page.orit(
+  @document(`
+    <h1 class='postTitle'>{{ _/title }}</h1>
+    {{ _ }}
+    <div class="controls">
+      {{ @if(previous, =`
+      <p>
+        <strong>Previous post</strong>: 
+        <a class="previous" href="{{ previous }}">{{ previousTitle }}</a>
+      </p>
+      `) }}
+      {{ @if(next, =`
+      <p>
+        <strong>Next post</strong>: 
+        <a class="next" href="{{ next }}">{{ nextTitle }}</a>
+      </p>
+      `) }}
+    </div>
+  `, { title: _/title })
+) }}
