@@ -1,0 +1,7 @@
+{{ @tree/map({ source: site.ori/displayOrder, valueMap: =@if(@not(@equals(@key, "index.html")), `
+<li>
+  {{ _/date }}
+  —
+  <a href="/posts/{{ @key }}">{{ _/title }}</a>
+</li>
+`)}) }}

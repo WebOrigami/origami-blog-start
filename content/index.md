@@ -1,5 +1,5 @@
 ---
-template: !ori templates/page.ori
+template: !ori templates/page.orit
 ---
 
 <div class="illo-container">
@@ -15,6 +15,6 @@ Each of the initial blog posts has special tips to help you get the most out of 
 ### Posts
 
 <ul>
-  {{ templates/postList.ori() }}
+  {{ templates/postList.orit() }}
   <li><a href="/posts">View all posts</a></li>
 </ul>

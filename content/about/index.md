@@ -1,5 +1,5 @@
 ---
-template: !ori templates/page.ori
+template: !ori templates/page.orit
 ---
 
 ## About this site

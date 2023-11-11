@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
-    <title>{{ title }}</title>
-{{ templates/seo.ori() }}
+    <title>{{ @or(_/title, "Hello Graph Origami!") }}</title>
+{{ templates/seo.orit() }}
   </head>
   <body>
     <main>    
       <div class="wrapper">
         <div class="content">
-          {{ @input }}
+          {{ _ }}
         </div>
       </div>
       <footer class="footer">

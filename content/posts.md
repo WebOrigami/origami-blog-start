@@ -1,5 +1,5 @@
 ---
-template: !ori templates/page.ori
+template: !ori templates/page.orit
 ---
 
 ## Posts
@@ -7,5 +7,5 @@ template: !ori templates/page.ori
 Write some details about your post lists. Or don't, and remove this!
 
 <ul>
-  {{ templates/postList.ori() }}
+  {{ templates/postList.orit() }}
 </ul>
