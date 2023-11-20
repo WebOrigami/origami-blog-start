@@ -1,9 +1,7 @@
-{{ @tree/map({
-  source: site.ori/displayOrder
-  valueMap: =`
+{{ @tree/map(site.ori/displayOrder, =`
 <li>
   {{ _/date }}
   —
   <a href="/posts/{{ @key }}">{{ _/title }}</a>
 </li>`
-}) }}
+) }}

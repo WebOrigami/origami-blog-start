@@ -2,10 +2,9 @@
   # Create the HTML fragments for the pages. We first inline any expressions in
   # {{…}} curly braces. This lets individual markdown pages like index.md create
   # a list of links to the posts. We then convert the markdown to HTML fragments.
-  bodies = @tree/map({
+  bodies = @tree/map(content, {
     deep: @true
     extensions: "md→html"
-    source: content
     valueMap: =@mdHtml(@inline(_))
   })
 
@@ -25,7 +24,7 @@
       {
         index.html = page.orit(bodies/posts.html)
       }
-      @tree/map(postPage.orit)(bodies/posts)
+      @tree/map(bodies/posts, postPage.orit)
     )
   }
 
