@@ -1,41 +1,42 @@
 {
-  # Create the HTML fragments for the pages. We first inline any expressions in
-  # {{…}} curly braces. This lets individual markdown pages like index.md create
-  # a list of links to the posts. We then convert the markdown to HTML fragments.
-  bodies = @tree/map(content, {
-    deep: @true
-    extensions: "md→html"
-    valueMap: =@mdHtml(@inline(_))
+  // Create the HTML fragments for the pages. We first inline any expressions in
+  // ${…} placeholders. This lets individual markdown pages like index.md create
+  // a list of links to the posts. We then convert the markdown to HTML
+  // fragments.
+  bodies = @mapDeep(content, {
+    extension: "md→html"
+    value: (post) => @mdHtml(@inline(post))
   })
 
-  # Define the overall public site.
+  // Define the overall public site.
   public = {
     assets
 
-    index.html = page.orit(bodies/index.html)
+    index.html = page.ori(bodies/index.html)
+    
     about = {
-      index.html = page.orit(bodies/about.html)
+      index.html = page.ori(bodies/about.html)
     }
 
-    # We store the posts index outside of the posts folder because it shouldn't
-    # appear in lists of posts. Merge the posts index into the public graph as
-    # posts/index.html so that someone visiting posts/ will see the index.
-    posts = @tree/merge(
+    // We store the posts index outside of the posts folder because it shouldn't
+    // appear in lists of posts. Merge the posts index into the public graph as
+    // posts/index.html so that someone visiting posts/ will see the index.
+    posts = @merge(
       {
-        index.html = page.orit(bodies/posts.html)
+        index.html = page.ori(bodies/posts.html)
       }
-      @tree/map(bodies/posts, postPage.orit)
+      @map(bodies/posts, postPage.ori)
     )
   }
 
-  # Sort the posts by date. By default, we'll sort the oldest first. We sort the
-  # keys in bodies/posts and not pages/posts, because the post template references
-  # the displayOrder below, which references postsByDate and would therefore
-  # create a circular reference.
-  postsByDate = @tree/sortBy(bodies/posts, =_/date)
+  // Sort the posts by date. By default, we'll sort the oldest first. We sort
+  // the keys in bodies/posts and not pages/posts, because the post template
+  // references the displayOrder below, which references postsByDate and would
+  // therefore create a circular reference.
+  postsByDate = @sortBy(bodies/posts, (post) => post/date)
 
-  # The display order used in lists of posts. If you want the newest posts listed
-  # first, comment out the first formula and uncomment the second.
+  // The display order used in lists of posts. If you want the newest posts
+  // listed first, comment out the first formula and uncomment the second.
   displayOrder = postsByDate
-  # displayOrder = @tree/reverse(postsByDate)
+  // displayOrder = @reverse(postsByDate)
 }

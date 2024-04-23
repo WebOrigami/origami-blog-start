@@ -1,7 +1,0 @@
-    <meta name="description" content="{{ description }}">
-    <link rel="canonical" href="{{ customDomain }}">
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ customDomain }}">
-    <meta property="og:description" content="{{ description }}">
-    <meta property="og:image" content="{{ customDomain }}/assets/bird.png">

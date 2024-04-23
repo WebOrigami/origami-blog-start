@@ -9,7 +9,7 @@ date: 2021-05-15
 > 💡 In the Glitch editor, click your project name in the top left, and in the menu that opens, select the name and type a new one. Your project will be live at the new address instantly.
 
 - **Add a domain** to your new Glitch project! Just go to the **Tools** menu in the Glitch editor, and click on **Custom Domains**.
-- Use the **Share** button in the editor to invite others in to edit your new Graph Origami project by typing in their email or Glitch username.
+- Use the **Share** button in the editor to invite others in to edit your new Web Origami project by typing in their email or Glitch username.
 
 > 💡 Make your code, or even your entire app, private to just those you invite, by [upgrading your Glitch account](https://glitch.com/pricing).
 

@@ -1,0 +1,29 @@
+// ---
+// next: !ori (@tree/nextKey(postsByDate, @key))
+// nextTitle: !ori postsByDate(next)/title
+// postsByDate: !ori site.ori/postsByDate
+// previous: !ori (@tree/previousKey(postsByDate, @key))
+// previousTitle: !ori postsByDate(previous)/title
+// ---
+(page) => page.ori({
+  title: page/title
+  @text: `
+    <h1 class='postTitle'>${ page/title }</h1>
+${ page/@text }
+  `
+
+    // <div class="controls">
+    //   ${ @if(previous, =`
+    //   <p>
+    //     <strong>Previous post</strong>: 
+    //     <a class="previous" href="${ previous }">${ previousTitle }</a>
+    //   </p>
+    //   `) }
+    //   ${ @if(next, =`
+    //   <p>
+    //     <strong>Next post</strong>: 
+    //     <a class="next" href="${ next }">${ nextTitle }</a>
+    //   </p>
+    //   `) }
+    // </div>
+})

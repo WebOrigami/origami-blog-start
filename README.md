@@ -1,8 +1,10 @@
-_Note: The goal of this project is to take a simple blog created in the Eleventy static site generator and rewrite it in Graph Origami. This project copies the original [Hello Eleventy](https://glitch.com/edit/#!/glitch-hello-eleventy) blog starter project, preserving its visual design and blog content, changing only what is necessary to make the blog work in Graph Origami. The crux of the Eleventy blog project is its `.eleventy.js` configuration script; here, the crux is the set of virtual files defined in `src/site.graph`._
+\_Note: The goal of this project is to take a simple blog created in the Eleventy static site generator and rewrite it in the [Origami](https://weborigami.org) language for creating websites.
 
-# Hello Graph Origami!
+This project copies the original [Hello Eleventy](https://glitch.com/edit/#!/glitch-hello-eleventy) blog starter project, preserving its visual design and blog content, changing only what is necessary to make the blog work in Web Origami. The crux of the Eleventy blog project is its `.eleventy.js` configuration script; here, the crux is the set of virtual files defined in `src/site.ori`.\_
 
-This project is a blog powered by [Graph Origami](https://graphorigami.org), a static site generator. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
+# Hello Origami!
+
+This project is a blog powered by the Origami website creation language. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
 
 _While you're working on the content in the editor your changes will happen ✨ immediately in the preview window. As you code the site is serving files from a local build directory. When you close the editor your site will run a `build` script then serve the output as a fast and always-on static site._
 
@@ -14,13 +16,13 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
 
-← `src/`: This folder contains all the files Graph Origami will use to build your site.
+← `src/`: This folder contains all the files Web Origami will use to build your site.
 
 ← `src/assets/style.css`: The styling rules for your pages and posts.
 
-← `src/site.graph`: Here you can configure how Graph Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
+← `src/site.ori`: Here you can configure how Web Origami builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
 
-← `package.json`: Your project's dependencies, where you will also find the start command to run the Graph Origami server or build the static files.
+← `package.json`: Your project's dependencies, where you will also find the start command to run the Web Origami server or build the static files.
 
 ### Working in the `markdown/` folder 📁
 
@@ -30,7 +32,7 @@ You'll get best use out of this project if you're familiar with basic HTML and J
 
 ## Try this next 🏗️
 
-With the site preview open on the right and the Glitch editor open on the left, navigate through the initial blog posts to learn more and carry out some development on your Graph Origami site!
+With the site preview open on the right and the Glitch editor open on the left, navigate through the initial blog posts to learn more and carry out some development on your Web Origami site!
 
 Check out `TODO.md` for some more optional next steps.
 

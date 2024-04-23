@@ -4,7 +4,7 @@ description: How to edit layouts
 date: 2021-04-12
 ---
 
-We've included a few helpful templates to get you started, which you can find nested in the `src/_includes/layouts` folder. By default Graph Origami uses a templating language called [Origami Templates](https://graphorigami.org/framework/templates.html), with files ending in `.ori`.
+We've included a few helpful templates to get you started, which you can find nested in the `src/_includes/layouts` folder. By default Web Origami uses a templating language called [Origami Templates](https://weborigami.org/framework/templates.html), with files ending in `.ori`.
 
 You can use front matter to pass data about the content of your pages and posts into the template, which builds it into the page.
 

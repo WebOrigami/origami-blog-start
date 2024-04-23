@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@graphorigami/origami": "0.0.34"
+    "@weborigami/origami": "0.0.48"
   },
   "engines": {
     "node": ">=16.6.1"
@@ -13,7 +13,7 @@
     "projectType": "generated_static"
   },
   "scripts": {
-    "start": "ori @serve @watch ., =@debug src/site.ori/public",
-    "build": "ori @copy src/site.ori/public, @files/build"
+    "build": "ori @copy src/site.ori/public, @mkdir/build",
+    "start": "ori @serve @watch src, =@debug site.ori/public"
   }
 }

@@ -10,7 +10,7 @@ If you take another look in your template for posts `src/postPage.ori` you'll se
 
 ```
 <p>
-  <em>{{ description }}</em>
+  <em>${ description }</em>
 </p>
 ```
 

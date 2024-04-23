@@ -1,0 +1,9 @@
+=`
+<ul>
+  ${ @map(site.ori/displayOrder, (post) => `
+  <li>
+    ${ post/date } — <a href="/posts/${ @key }">${ post/title }</a>
+  </li>
+  `) }
+</ul>
+`

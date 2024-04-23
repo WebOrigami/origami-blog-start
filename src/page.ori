@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+(page) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
-    <title>{{ @or(_/title, "Hello Graph Origami!") }}</title>
-{{ seo.orit() }}
+    <title>${ page/title }</title>
+${ seo.ori(siteInfo.yaml) }
   </head>
   <body>
     <main>    
       <div class="wrapper">
         <div class="content">
-          {{ _ }}
+${ page/@text }
         </div>
       </div>
       <footer class="footer">
@@ -30,3 +30,4 @@
     </main>
   </body>
 </html>
+`
