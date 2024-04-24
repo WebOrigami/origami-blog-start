@@ -1,0 +1,8 @@
+// A single post in JSON Feed format
+(post, slug) => {
+  content_html: post/@text
+  date_published: @new(@js/Date, post/date)
+  id: `${ siteInfo.yaml }/${ slug }`
+  title: post/title
+  url: `${ siteInfo.yaml }/${ slug }`
+}

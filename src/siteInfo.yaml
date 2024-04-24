@@ -1,4 +1,4 @@
 description: A place for my thoughts
-customDomain: https://example.com/blog
-title: My personal blog
 image: assets/bird.png
+title: My personal blog
+url: https://example.com/blog

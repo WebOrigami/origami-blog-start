@@ -10,13 +10,17 @@
     // About page
     about.html = page.ori(@mdHtml(about.md))
 
-    // The posts area has a page for each post
+    // The posts area contains one page for each post
     posts = @map(bodies, postPage.ori)
+
+    // Feeds
+    feed.json = @json(feed.ori(postsByDate))
+    rss.xml = @rss(feed.json)
   }
 
-  // HTML fragments (not complete pages) for the posts.
+  // HTML fragments (not complete pages) for the posts
   bodies = @map(content, @mdHtml)
 
   // Sort the posts by date, then reverse so newest posts are first.
-  postsByDate = @sortBy(content, (post) => post/date) → @reverse
+  postsByDate = @sortBy(bodies, (post) => post/date) → @reverse
 }
