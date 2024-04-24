@@ -5,13 +5,13 @@
     assets
 
     // Index page lists all posts
-    index.html = index.ori(@mdHtml(index.md), postsByDate)
+    index.html = index.ori(@mdHtml(index.md), newestPostsFirst)
 
     // About page
     about.html = page.ori(@mdHtml(about.md))
 
     // The posts area contains one page for each post
-    posts = @map(bodies, postPage.ori)
+    posts = @map(@sequence(postsByDate), postPage.ori)
 
     // Feeds
     feed.json = @json(feed)
@@ -21,9 +21,12 @@
   // HTML fragments (not complete pages) for the posts
   bodies = @map(content, @mdHtml)
 
-  // Sort the posts by date, then reverse so newest posts are first.
-  postsByDate = @sortBy(bodies, (post) => post/date) → @reverse
+  // Chronological order
+  postsByDate = @sortBy(bodies, (post) => post/date)
+
+  // Reverse chronological order
+  newestPostsFirst = @reverse(postsByDate)
 
   // Data for feeds
-  feed = feed.ori(postsByDate)
+  feed = feed.ori(newestPostsFirst)
 }

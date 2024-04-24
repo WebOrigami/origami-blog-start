@@ -2,7 +2,7 @@
 (post, slug) => {
   content_html: post/@text
   date_published: @new(@js/Date, post/date)
-  id: `${ siteInfo.yaml }/${ slug }`
+  id: `${ siteInfo.yaml/url }/${ slug }`
   title: post/title
-  url: `${ siteInfo.yaml }/${ slug }`
+  url: `${ siteInfo.yaml/url }/${ slug }`
 }
