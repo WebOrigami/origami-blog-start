@@ -14,8 +14,8 @@
     posts = @map(bodies, postPage.ori)
 
     // Feeds
-    feed.json = @json(feed.ori(postsByDate))
-    rss.xml = @rss(feed.json)
+    feed.json = @json(feed)
+    rss.xml = @rss(feed)
   }
 
   // HTML fragments (not complete pages) for the posts
@@ -23,4 +23,7 @@
 
   // Sort the posts by date, then reverse so newest posts are first.
   postsByDate = @sortBy(bodies, (post) => post/date) → @reverse
+
+  // Data for feeds
+  feed = feed.ori(postsByDate)
 }
