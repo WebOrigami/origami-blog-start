@@ -1,0 +1,7 @@
+(body, posts) => page.ori({
+  title: body/title
+  @text: `
+    ${ body/@text }
+    ${ postList.ori(posts) }
+`
+})
