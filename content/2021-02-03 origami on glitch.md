@@ -1,7 +1,5 @@
 ---
 title: Getting started with Web Origami on Glitch!
-description: You won't believe how easy it can be
-date: 2021-02-03
 ---
 
 Congrats! You've launched a beautiful new Web Origami-powered blog on Glitch.

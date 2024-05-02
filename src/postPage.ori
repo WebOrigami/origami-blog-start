@@ -1,22 +1,32 @@
-(page) => page.ori({
-  title: page/title
+(post, key, tree) => page.ori({
+  title: post/title
   @text: `
-    <h1 class='postTitle'>${ page/title }</h1>
-    ${ page/@text }
+    <h1 class='postTitle'>${ post/title }</h1>
     <p>
-      ${ @if(page/previousKey, =`
-        <a class="previous" href="${ page/previousKey }">
+      Posted
+      ${
+        @new(@js/Date, post/date)/toLocaleDateString("en-US", {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })
+      }
+    </p>
+    ${ post/@text }
+    <p>
+      ${ @if(post/previousKey, =`
+        <a class="previous" href="${ post/previousKey }">
           <strong>Previous:</strong>
-          ${ site.ori/bodies(page/previousKey)/title }
+          ${ tree(post/previousKey)/title }
         </a>
         &nbsp;
       `) }
       ${ @if(
-        page/nextKey,
+        post/nextKey,
         =`
-          <a class="next" href="${ page/nextKey }">
+          <a class="next" href="${ post/nextKey }">
             <strong>Next:</strong>
-            ${ site.ori/bodies(page/nextKey)/title }
+            ${ tree(post/nextKey)/title }
           </a>
         `,
         =`

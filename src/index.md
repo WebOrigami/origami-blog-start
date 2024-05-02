@@ -2,6 +2,9 @@
 title: Hello Origami!
 ---
 
+<link rel="alternate" type="application/rss+xml" title="${ site.yaml/description }" href="rss.xml" />
+<link rel="alternate" type="application/json" title="${ site.yaml/description }" href="feed.json" />
+
 <div class="illo-container">
   <img src="/assets/bird.svg" class="illustration" style="transform: none" alt="Web Origami">
 </div>

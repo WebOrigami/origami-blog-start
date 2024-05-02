@@ -5,28 +5,36 @@
     assets
 
     // Index page lists all posts
-    index.html = index.ori(@mdHtml(index.md), newestPostsFirst)
+    index.html = index.ori(@mdHtml(index.md), processed)
 
     // About page
     about.html = page.ori(@mdHtml(about.md))
 
     // The posts area contains one page for each post
-    posts = @map(postsByDate, postPage.ori)
+    posts = @map(processed, postPage.ori)
 
     // Feeds
     feed.json = @json(feed)
     rss.xml = @rss(feed)
   }
 
-  // HTML fragments (not complete pages) for the posts
-  bodies = @map(content, @mdHtml)
-
-  // Sort in chronological order, add next/previous keys
-  postsByDate = @sortBy(bodies, (post) => post/date) → @sequence
-
-  // Reverse chronological order
-  newestPostsFirst = @reverse(postsByDate)
+  // Main processing pipeline starts with the markdown content
+  processed = content
+    // Parse markdown to HTML and replace `.md` extension with `.html`
+    → @map(@mdHtml)
+    // Rename files to slugs and add a `date` field parsed from the filename
+    → @map({
+      key: (post, fileName) => @slug(fileName)
+      value: (post, fileName) => @merge(
+        post,
+        @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
+      )
+    })
+    // Add next/previous keys; do this before sorting
+    → @addNextPrevious
+    // Sort in reverse chronological order
+    → @reverse
 
   // Data for feeds
-  feed = feed.ori(newestPostsFirst)
+  feed = feed.ori(processed)
 }

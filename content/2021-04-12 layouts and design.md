@@ -1,7 +1,5 @@
 ---
 title: Layouts & Design
-description: How to edit layouts
-date: 2021-04-12
 ---
 
 We've included a few helpful templates to get you started, which you can find nested in the `src/_includes/layouts` folder. By default Web Origami uses a templating language called [Origami Templates](https://weborigami.org/framework/templates.html), with files ending in `.ori`.

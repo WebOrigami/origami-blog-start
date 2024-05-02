@@ -1,7 +1,5 @@
 ---
 title: Taking your site to the next level
-description: What can you build on top of this?
-date: 2021-05-15
 ---
 
 - Right now, your site is **live on the web**, with a real URL (a secure HTTPS address 🔒) that updates as soon as you make changes to your site or app.
