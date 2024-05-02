@@ -13,7 +13,7 @@
     "projectType": "generated_static"
   },
   "scripts": {
-    "build": "rm -rf build; ori @copy src/site.ori/public, @mkdir/build",
-    "start": "ori @serve @watch src, =@debug site.ori/public"
+    "build": "rm -rf build; ori @copy src/site.ori, @mkdir/build",
+    "start": "ori @serve @watch src, =@debug site.ori"
   }
 }

@@ -1,40 +1,39 @@
-{
-  // Define the overall public site.
-  public = {
-    // Stylesheet and images
-    assets
+// Begin a pipeline that starts with the folder of markdown content.
+content
 
-    // Index page lists all posts
-    index.html = index.ori(@mdHtml(index.md), processed)
+// Parse markdown to HTML and replace `.md` extension with `.html`.
+→ @map(@mdHtml)
 
-    // About page
-    about.html = page.ori(@mdHtml(about.md))
+// Rename files to slugs and add a `date` field parsed from the filename.
+→ @map({
+  key: (post, fileName) => @slug(fileName)
+  value: (post, fileName) => @merge(
+    post,
+    @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
+  )
+})
 
-    // The posts area contains one page for each post
-    posts = @map(processed, postPage.ori)
+// Add next/previous keys (do this before sorting).
+→ @addNextPrevious
 
-    // Feeds
-    feed.json = @json(feed)
-    rss.xml = @rss(feed)
-  }
+// Sort in reverse chronological order.
+→ @reverse
 
-  // Main processing pipeline starts with the markdown content
-  processed = content
-    // Parse markdown to HTML and replace `.md` extension with `.html`
-    → @map(@mdHtml)
-    // Rename files to slugs and add a `date` field parsed from the filename
-    → @map({
-      key: (post, fileName) => @slug(fileName)
-      value: (post, fileName) => @merge(
-        post,
-        @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
-      )
-    })
-    // Add next/previous keys; do this before sorting
-    → @addNextPrevious
-    // Sort in reverse chronological order
-    → @reverse
+// Turns the processed posts into the site's tree of resources.
+→ (processed) => {
+  // Stylesheet and images
+  assets
 
-  // Data for feeds
-  feed = feed.ori(processed)
+  // Index page lists all posts
+  index.html = index.ori(@mdHtml(index.md), processed)
+
+  // About page
+  about.html = page.ori(@mdHtml(about.md))
+
+  // The posts area contains one page for each post
+  posts = @map(processed, postPage.ori)
+
+  // Feeds
+  feed.json = @json(feed.ori(processed))
+  rss.xml = @rss(feed.ori(processed))
 }
