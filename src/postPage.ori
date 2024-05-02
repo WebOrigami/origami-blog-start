@@ -10,13 +10,21 @@
           ${ site.ori/bodies(page/previousKey)/title }
         </a>
         &nbsp;
-      `)}
-      ${ @if(page/nextKey, =`
-        <a class="next" href="${ page/nextKey }">
-          <strong>Next:</strong>
-          ${ site.ori/bodies(page/nextKey)/title }
-        </a>
-      `)}
+      `) }
+      ${ @if(
+        page/nextKey,
+        =`
+          <a class="next" href="${ page/nextKey }">
+            <strong>Next:</strong>
+            ${ site.ori/bodies(page/nextKey)/title }
+          </a>
+        `,
+        =`
+          <a class="next" href="/">
+            <strong>Back to home</strong>
+          </a>
+        `
+      ) }
     </p>
   `
 })

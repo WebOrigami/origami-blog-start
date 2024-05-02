@@ -11,7 +11,7 @@
     about.html = page.ori(@mdHtml(about.md))
 
     // The posts area contains one page for each post
-    posts = @map(@sequence(postsByDate), postPage.ori)
+    posts = @map(postsByDate, postPage.ori)
 
     // Feeds
     feed.json = @json(feed)
@@ -21,8 +21,8 @@
   // HTML fragments (not complete pages) for the posts
   bodies = @map(content, @mdHtml)
 
-  // Chronological order
-  postsByDate = @sortBy(bodies, (post) => post/date)
+  // Sort in chronological order, add next/previous keys
+  postsByDate = @sortBy(bodies, (post) => post/date) → @sequence
 
   // Reverse chronological order
   newestPostsFirst = @reverse(postsByDate)
