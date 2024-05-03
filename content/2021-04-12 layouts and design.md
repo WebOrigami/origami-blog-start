@@ -7,5 +7,5 @@ We've included a few helpful templates to get you started, which you can find ne
 You can use front matter to pass data about the content of your pages and posts into the template, which builds it into the page.
 
 - The basic page template is `page.ori`
-- Each individual post uses `post.ori`
-- The home and Posts pages use `postList.ori` to list all posts
+- Each individual post uses `postPage.ori`
+- The home page uses `index.ori` for the top level page, and `postList.ori` to list all the posts.
