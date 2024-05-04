@@ -19,7 +19,7 @@
   // Turn the posts into a feed.
   feed = feed.ori(processed)
 
-  // Turns the processed posts into the site's tree of resources.
+  // Construct the site's tree of public resources to deploy.
   public = {
     // Stylesheet and images
     assets
