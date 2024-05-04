@@ -1,39 +1,42 @@
-// Begin a pipeline that starts with the folder of markdown content.
-content
+{
+  // Define a pipeline that processes the folder of markdown content.
+  processed = content
+    // Parse markdown to HTML and replace `.md` extension with `.html`.
+    → @map(@mdHtml)
+    // Rename files to slugs and add a `date` field parsed from the filename.
+    → @map({
+      key: (post, fileName) => @slug(fileName)
+      value: (post, fileName) => @merge(
+        post,
+        @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
+      )
+    })
+    // Add next/previous keys (do this before sorting).
+    → @addNextPrevious
+    // Sort in reverse chronological order.
+    → @reverse
+  
+  // Turn the posts into a feed.
+  feed = feed.ori(processed)
 
-// Parse markdown to HTML and replace `.md` extension with `.html`.
-→ @map(@mdHtml)
+  // Turns the processed posts into the site's tree of resources.
+  public = {
+    // Stylesheet and images
+    assets
 
-// Rename files to slugs and add a `date` field parsed from the filename.
-→ @map({
-  key: (post, fileName) => @slug(fileName)
-  value: (post, fileName) => @merge(
-    post,
-    @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
-  )
-})
+    // Index page lists all posts
+    index.html = index.ori(@mdHtml(index.md), processed)
 
-// Add next/previous keys (do this before sorting).
-→ @addNextPrevious
+    // About page
+    about.html = page.ori(@mdHtml(about.md))
 
-// Sort in reverse chronological order.
-→ @reverse
+    // The posts area contains one page for each post
+    posts = @map(processed, postPage.ori)
 
-// Turns the processed posts into the site's tree of resources.
-→ (processed) => {
-  // Stylesheet and images
-  assets
+    // Feeds
+    feed.json = @json(feed)
+    rss.xml = @rss(feed)
+  }
 
-  // Index page lists all posts
-  index.html = index.ori(@mdHtml(index.md), processed)
-
-  // About page
-  about.html = page.ori(@mdHtml(about.md))
-
-  // The posts area contains one page for each post
-  posts = @map(processed, postPage.ori)
-
-  // Feeds
-  feed.json = @json(feed.ori(processed))
-  rss.xml = @rss(feed.ori(processed))
-}
+  // From the above, we return the `public` tree as the program's output.
+}/public
