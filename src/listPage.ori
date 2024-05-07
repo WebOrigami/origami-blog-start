@@ -1,0 +1,19 @@
+(paginated, pageNumber) => page.ori({
+  title: `Page ${ pageNumber }`
+  @text: `
+    ${ postList.ori(paginated/items) }
+    <p>
+      ${ @if(paginated/nextKey, =`
+          <a class="next" href="${ paginated/nextKey }">
+          <strong>Older posts</strong>
+        </a>
+        &nbsp;
+      `) }
+      ${ @if(paginated/previousKey, =`
+        <a class="previous" href="${ paginated/previousKey }">
+          <strong>Newer posts</strong>
+        </a>
+      `) }
+    </p>
+`
+})

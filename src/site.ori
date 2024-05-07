@@ -1,7 +1,9 @@
 {
-  // Define a pipeline that processes the folder of markdown content.
+  // Define a pipeline that starts with the folder of markdown content and
+  // applies a series of transformations to process them into a form that's
+  // ready to be displayed on the home page and individual post pages.
   processed = content
-    // Parse markdown to HTML and replace `.md` extension with `.html`.
+    // Translate markdown to HTML and replace `.md` extension with `.html`.
     → @map(@mdHtml)
     // Rename files to slugs and add a `date` field parsed from the filename.
     → @map({
@@ -11,9 +13,13 @@
         @makeParser("^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")(fileName)
       )
     })
-    // Add next/previous keys (do this before sorting).
+    // Add next/previous keys. The posts are already in chronological order
+    // because their names start with a YYYY-MM-DD date, so we can determine the
+    // next and previous posts by looking at the adjacent posts in the list. We
+    // need to do this before sorting in reverse order in the next step, which
+    // will flip the order of the posts.
     → @addNextPrevious
-    // Sort in reverse chronological order.
+    // Finally, sort in reverse chronological order.
     → @reverse
   
   // Turn the posts into a feed.
@@ -21,17 +27,19 @@
 
   // Construct the site's tree of public resources to deploy.
   public = {
+    // About page
+    about.html = page.ori(@mdHtml(about.md))
+
     // Stylesheet and images
     assets
 
     // Index page lists all posts
     index.html = index.ori(@mdHtml(index.md), processed)
 
-    // About page
-    about.html = page.ori(@mdHtml(about.md))
+    pages = @map(@paginate(processed), listPage.ori)
 
     // The posts area contains one page for each post
-    posts = @map(processed, postPage.ori)
+    posts = processed → @map(postPage.ori)
 
     // Feeds
     feed.json = @json(feed)
