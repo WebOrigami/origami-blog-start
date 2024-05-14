@@ -5,5 +5,12 @@
   description: siteInfo.yaml/description
   feed_url: `${ siteInfo.yaml/url }/feed.json`
   home_page_url: siteInfo.yaml/url
-  items: @values(@map(posts, feedItem.ori))
+  
+  items: @values(@map(posts, (post, slug) => {
+    content_html: post/@text
+    date_published: @new(@js/Date, post/date)
+    id: `${ siteInfo.yaml/url }/${ slug }`
+    title: post/title
+    url: `${ siteInfo.yaml/url }/${ slug }`
+  }))
 }
