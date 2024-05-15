@@ -36,7 +36,18 @@
     // Index page lists all posts
     index.html = index.ori(@mdHtml(index.md), processed)
 
-    pages = @map(@paginate(processed), listPage.ori)
+    api = {
+      all: @map(@paginate(processed, 3), {
+        key: (page, pageNumber) => `${pageNumber}.json`
+        value: @json
+      })
+      posts: @map(processed, {
+        extension: "html→json"
+        value: @json
+      })
+    }
+
+    pages = @map(@paginate(processed, 3), listPage.ori)
 
     // The posts area contains one page for each post
     posts = @map(processed, postPage.ori)
