@@ -50,7 +50,13 @@
     pages = @map(@paginate(processed, 3), listPage.ori)
 
     // The posts area contains one page for each post
-    posts = @map(processed, postPage.ori)
+    posts = @merge(
+      {
+        // If user tries to open `/posts`, redirect to `/`.
+        index.html = @redirect("..")
+      }
+      @map(processed, postPage.ori)
+    )
 
     // Feeds
     feed.json = @json(feed)
