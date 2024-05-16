@@ -1,8 +1,8 @@
 (posts) => `
 <ul>
-  ${ @map(posts, (post) => `
+  ${ @map(posts, (post, key) => `
   <li>
-    ${ post/date } — <a href="/posts/${ @key }">${ post/title }</a>
+    ${ post/date } — <a href="/posts/${ key }">${ post/title }</a>
   </li>
   `) }
 </ul>
