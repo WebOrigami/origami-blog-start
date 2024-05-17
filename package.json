@@ -1,12 +1,12 @@
 {
-  "name": "origami-blog-starter",
+  "name": "origami-blog-start",
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@weborigami/origami": "0.0.49"
+    "@weborigami/origami": "0.0.50"
   },
   "engines": {
-    "node": ">=16.6.1"
+    "node": "^22.0.0"
   },
   "license": "MIT",
   "glitch": {
