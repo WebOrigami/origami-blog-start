@@ -34,12 +34,12 @@
     assets
     images
 
-    // Index page lists the first page of posts
-    index.html = index.ori(@mdHtml(index.md), paginated/1)
+    // Use the first page of posts as the home page.
+    index.html = pages/1.html
 
     // Posts grouped into pages.
     pages = @map(paginated, {
-      key: (post, key) => `${key}.html`,
+      extension: "→html"
       value: listPage.ori
     })
 
