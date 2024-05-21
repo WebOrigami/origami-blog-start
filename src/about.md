@@ -1,5 +1,6 @@
 ---
 title: About
+area: about
 ---
 
 ## About this site

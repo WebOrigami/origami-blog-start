@@ -79,7 +79,6 @@ to this section's matching END comment to see page-specific styles.
 a:not(.btn--remix):visited {
   font-family: HK Grotesk;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.1rem;
   color: #000;
   text-decoration: none;
@@ -182,6 +181,12 @@ a:not(.btn--remix):visited {
 }
 a:hover {
   background: var(--color-primary);
+}
+
+body.home a.home,
+body.about a.about
+{
+  font-weight: bold;
 }
 
 /* Title style adjustments */

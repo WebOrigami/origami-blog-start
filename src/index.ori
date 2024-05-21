@@ -1,5 +1,6 @@
 (body, posts) => page.ori({
   title: body/title
+  area: "home"
   @text: `
     ${ body/@text }
     ${ postList.ori(posts) }
