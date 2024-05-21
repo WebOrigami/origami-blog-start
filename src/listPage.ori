@@ -10,10 +10,12 @@
         &nbsp;
       `) }
       ${ @if(paginated/previousPage, =`
-        <a class="previous" href="${ paginated/previousPage }">
+        <a class="previous" href="${
+          @if(@equals(paginated/previousPage, 1), `/`, paginated/previousPage)
+        }">
           <strong>Newer posts</strong>
         </a>
       `) }
     </p>
-`
+  `
 })

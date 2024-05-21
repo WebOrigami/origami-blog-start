@@ -1,8 +1,15 @@
-(body, posts) => page.ori({
+(body, paginated) => page.ori({
   title: body/title
   area: "home"
   @text: `
     ${ body/@text }
-    ${ postList.ori(posts) }
-`
+    ${ postList.ori(paginated/items) }
+    <p>
+      ${ @if(paginated/nextPage, =`
+        <a class="next" href="/pages/${ paginated/nextPage }">
+          <strong>Older posts</strong>
+        </a>
+      `) }
+    </p>
+  `
 })

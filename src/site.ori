@@ -3,26 +3,26 @@
   // applies a series of transformations to process them into a form that's
   // ready to be displayed on the home page and individual post pages.
   processed = content
-    // Translate markdown to HTML and replace `.md` extension with `.html`.
+    // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
-    // Rename files to slugs and add a `date` field parsed from the filename.
-    → @mapFn({
-      key: (post, fileName) => @slug(fileName)
-      value: (post, fileName) => @merge(
-        post,
-        @regexParse(fileName, "^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d) ")
-      )
-    })
+    // Add a `date` field parsed from the filename.
+    → @mapFn((post, fileName) => @merge(
+      post
+      @regexParse(fileName, "^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d)")
+    ))
     // Add next/previous keys. The posts are already in chronological order
     // because their names start with a YYYY-MM-DD date, so we can determine the
     // next and previous posts by looking at the adjacent posts in the list. We
-    // need to do this before sorting in reverse order in the next step, which
-    // will flip the order of the posts.
+    // need to do this before sorting in reverse order in the next step because
+    // we want "next"/"previous" to go in chronological order.
     → @addNextPrevious
-    // Finally, sort in reverse chronological order.
+    // Finally, reverse to get posts in reverse chronological order.
     → @reverse
-  
-  // Turn the posts into a feed.
+
+  // Group the posts into pages of 5 posts each.
+  paginated = @paginate(processed, 5)
+
+  // Turn all the posts into a feed.
   feed = feed.ori(processed)
 
   // Construct the site's tree of public resources to deploy.
@@ -30,13 +30,15 @@
     // About page
     about.html = page.ori(@mdHtml(about.md))
 
-    // Stylesheet and images
+    // Assets (fonts, styles) and images
     assets
+    images
 
-    // Index page lists all posts
-    index.html = index.ori(@mdHtml(index.md), processed)
+    // Index page lists the first page of posts
+    index.html = index.ori(@mdHtml(index.md), paginated/1)
 
-    pages = @map(@paginate(processed, 3), listPage.ori)
+    // Posts grouped into pages
+    pages = @map(paginated, listPage.ori)
 
     // The posts area contains one page for each post
     posts = @map(processed, postPage.ori)

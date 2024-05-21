@@ -1,9 +1,0 @@
-`
-    <meta name="description" content="${ siteInfo.yaml/description }">
-    <link rel="canonical" href="${ siteInfo.yaml/url }">
-    <meta property="og:title" content="${ siteInfo.yaml/title }">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="${ siteInfo.yaml/url }">
-    <meta property="og:description" content="${ siteInfo.yaml/description }">
-    <meta property="og:image" content="${ siteInfo.yaml/url }/${ siteInfo.yaml/image }">
-`

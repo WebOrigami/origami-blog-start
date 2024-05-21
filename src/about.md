@@ -3,7 +3,7 @@ title: About
 area: about
 ---
 
-## About this site
+# About this site
 
 Here you can write some details about you and your new blog:
 

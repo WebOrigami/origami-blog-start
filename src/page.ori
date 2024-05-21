@@ -5,26 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
     <title>${ page/title }</title>
-${ seo.ori/ }
   </head>
   <body ${ @if(page/area, =`class="${ page/area }"`) }>
+    <header>
+      <a href="/" class="home">#pondlife</a>
+      <a href="/about.html" class="about">About</a>
+    </header>
     <main>    
-      <div class="wrapper">
-        <div class="content">
 ${ page/@text }
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="links">
-          <a href="/" class="home">Home</a>
-          <span class="divider">|</span>
-          <a href="/about.html" class="about">About</a>
-        </div>
-        <a class="btn--remix" target="_top" href="https://glitch.com/edit/#!/remix/origami-blog-starter">
-          <img src="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FLogo_Color.svg?v=1618199565140" alt="" /> 
-          Remix on Glitch
-        </a>
-      </footer>
     </main>
   </body>
 </html>
