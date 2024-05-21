@@ -4,14 +4,14 @@
     ${ postList.ori(paginated/items) }
     <p>
       ${ @if(paginated/nextPage, =`
-          <a class="next" href="${ paginated/nextPage }">
+          <a class="next" href="${ paginated/nextPage }.html">
           <strong>Older posts</strong>
         </a>
         &nbsp;
       `) }
       ${ @if(paginated/previousPage, =`
         <a class="previous" href="${
-          @if(@equals(paginated/previousPage, 1), `/`, paginated/previousPage)
+          @if(@equals(paginated/previousPage, 1), `/`, =`${ paginated/previousPage }.html` )
         }">
           <strong>Newer posts</strong>
         </a>

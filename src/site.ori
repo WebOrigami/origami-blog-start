@@ -37,10 +37,13 @@
     // Index page lists the first page of posts
     index.html = index.ori(@mdHtml(index.md), paginated/1)
 
-    // Posts grouped into pages
-    pages = @map(paginated, listPage.ori)
+    // Posts grouped into pages.
+    pages = @map(paginated, {
+      key: (post, key) => `${key}.html`,
+      value: listPage.ori
+    })
 
-    // The posts area contains one page for each post
+    // The posts area contains one page for each post.
     posts = @map(processed, postPage.ori)
 
     // Feeds

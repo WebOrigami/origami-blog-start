@@ -6,7 +6,7 @@
     ${ postList.ori(paginated/items) }
     <p>
       ${ @if(paginated/nextPage, =`
-        <a class="next" href="/pages/${ paginated/nextPage }">
+        <a class="next" href="/pages/${ paginated/nextPage }.html">
           <strong>Older posts</strong>
         </a>
       `) }
