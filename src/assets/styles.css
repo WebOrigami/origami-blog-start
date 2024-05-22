@@ -36,6 +36,7 @@
 
 body {
   --color-heading: black;
+  --space: clamp(1rem, 10vw, 6rem);
   color: #666;
   font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -68,10 +69,11 @@ h3 {
 }
 
 main {
-  padding-bottom: 10rem;
+  padding-bottom: var(--space);
 }
 
-header {
+header,
+footer {
   display: flex;
   gap: 1rem;
   padding: 2rem 0;
@@ -94,8 +96,8 @@ body.about a.about
   font-weight: 600;
 }
 
-section {
-  --space: clamp(1rem, 10vw, 6rem);
+section,
+footer {
   border-top: 1px solid #e1e1e1;
   margin-top: var(--space);
   padding-top: var(--space);
