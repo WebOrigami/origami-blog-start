@@ -1,17 +1,8 @@
+// A page showing a single post
 (post, key, tree) => page.ori({
   title: post/title
   @text: `
-    <h2>${ post/title }</h2>
-    <p>
-      ${
-        new:@js/Date(post/date)/toLocaleDateString("en-US", {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })
-      }
-    </p>
-    ${ post/@text }
+    ${ post.ori(post, key) }
     <p>
       ${ @if(post/previousKey, =`
         <a class="previous" href="${ post/previousKey }">Previous: ${ tree(post/previousKey)/title }</a>

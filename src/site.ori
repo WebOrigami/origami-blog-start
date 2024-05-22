@@ -6,21 +6,17 @@
     // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
     // Add a `date` field parsed from the filename.
-    → @mapFn((post, fileName) => @merge(
-      post
-      @regexParse(fileName, "^(?<date>\\d\\d\\d\\d-\\d\\d-\\d\\d)")
-    ))
+    → @mapFn((post, fileName) => @merge(post, {
+      date: parseDate.ori(fileName)
+    }))
     // Add next/previous keys. The posts are already in chronological order
     // because their names start with a YYYY-MM-DD date, so we can determine the
     // next and previous posts by looking at the adjacent posts in the list. We
-    // need to do this before sorting in reverse order in the next step because
-    // we want "next"/"previous" to go in chronological order.
+    // need to do this before reversing the order in the next step because we
+    // want "next"/"previous" to go in chronological order.
     → @addNextPrevious
     // Finally, reverse to get posts in reverse chronological order.
     → @reverse
-
-  // Group the posts into pages of 5 posts each.
-  paginated = @paginate(processed, 5)
 
   // Turn all the posts into a feed.
   feed = feed.ori(processed)
@@ -37,14 +33,18 @@
     // Use the first page of posts as the home page.
     index.html = pages/1.html
 
-    // Posts grouped into pages.
-    pages = @map(paginated, {
-      extension: "→html"
-      value: listPage.ori
-    })
+    // Posts grouped into pages: 1.html, 2.html, etc.
+    pages =
+      // Group the posts into sets of 5 posts each.
+      @paginate(processed, 5)
+      // Turn each set of posts into HTML.
+      → @mapFn({
+        extension: "→html"
+        value: multiPostPage.ori
+      })
 
-    // The posts area contains one page for each post.
-    posts = @map(processed, postPage.ori)
+    // The posts area contains a page for each individual post.
+    posts = @map(processed, singlePostPage.ori)
 
     // Feeds
     feed.json = @json(feed)

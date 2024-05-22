@@ -8,7 +8,7 @@
   
   items: @values(@map(posts, (post, slug) => {
     content_html: post/@text
-    date_published: new:@js/Date(post/date)
+    date_published: post/date
     id: `${ siteInfo.yaml/url }/${ slug }`
     title: post/title
     url: `${ siteInfo.yaml/url }/${ slug }`
