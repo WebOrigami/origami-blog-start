@@ -1,7 +1,7 @@
 {
   // Define a pipeline that starts with the folder of markdown content and
   // applies a series of transformations to process them into a form that's
-  // ready to be displayed on the home page and individual post pages.
+  // ready to be displayed on the various types of pages.
   processed = content
     // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
