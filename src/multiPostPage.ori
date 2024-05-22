@@ -1,6 +1,6 @@
 // A page showing multiple posts
 (paginated) => page.ori({
-  title: `Page ${ paginated/pageNumber }`
+  title: `#pondlife — Page ${ paginated/pageNumber }`
   area: @if(@equals(paginated/pageNumber, 1), "home")
   @text: `
     <h1>#pondlife</h1>
