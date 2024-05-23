@@ -1,7 +1,8 @@
+// Origami program to generate a blog from a folder of markdown files
 {
-  // Define a pipeline that starts with the folder of markdown content and
-  // applies a series of transformations to process them into a form that's
-  // ready to be displayed on the various types of pages.
+  // Define a pipeline that starts with the folder of markdown files and applies
+  // a series of transformations to process them into a form that's ready to be
+  // displayed on the various types of pages.
   processed = content
     // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
@@ -12,8 +13,8 @@
     // Add next/previous keys. The posts are already in chronological order
     // because their names start with a YYYY-MM-DD date, so we can determine the
     // next and previous posts by looking at the adjacent posts in the list. We
-    // need to do this before reversing the order in the next step because we
-    // want "next"/"previous" to go in chronological order.
+    // need to do this before reversing the order in the next step; we want
+    // "next" to go to the next post in chronological order, not display order.
     → @addNextPrevious
     // Finally, reverse to get posts in reverse chronological order.
     → @reverse
@@ -33,11 +34,11 @@
     // Use the first page of posts as the home page.
     index.html = pages/1.html
 
-    // Posts grouped into pages: 1.html, 2.html, etc.
+    // The pages area breaks the posts into sets of 5 posts each.
     pages =
-      // Group the posts into sets of 5 posts each.
+      // Group the posts into sets of 5.
       @paginate(processed, 5)
-      // Turn each set of posts into HTML.
+      // Turn each set of posts into a page with a `.html` extension.
       → @mapFn({
         extension: "→html"
         value: multiPostPage.ori
