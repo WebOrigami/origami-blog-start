@@ -1,10 +1,10 @@
 // A page showing multiple posts
 (paginated) => page.ori({
-  title: `#pondlife — Page ${ paginated/pageNumber }`
+  title: `${ siteInfo.yaml/title } — Page ${ paginated/pageNumber }`
   area: @if(@equals(paginated/pageNumber, 1), "home")
   @text: `
-    <h1>#pondlife</h1>
-    <p>Dispatches from off the grid</p>
+    <h1>${ siteInfo.yaml/title }</h1>
+    <p>${ siteInfo.yaml/description }</p>
 
     ${
       // List all the posts on this page.

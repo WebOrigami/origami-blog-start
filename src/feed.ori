@@ -9,8 +9,8 @@
   items: @values(@map(posts, (post, slug) => {
     content_html: post/@text
     date_published: post/date
-    id: `${ siteInfo.yaml/url }/${ slug }`
+    id: `${ siteInfo.yaml/url }/posts/${ slug }`
     title: post/title
-    url: `${ siteInfo.yaml/url }/${ slug }`
+    url: `${ siteInfo.yaml/url }/posts/${ slug }`
   }))
 }

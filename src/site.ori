@@ -3,7 +3,7 @@
   // Define a pipeline that starts with the folder of markdown files and applies
   // a series of transformations to process them into data that's ready to be
   // displayed on the various types of pages.
-  postsData = markdown
+  data = markdown
     // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
     // Add a `date` field parsed from the filename.
@@ -20,14 +20,14 @@
     → @reverse
 
   // Turn all the posts into a feed.
-  feed = feed.ori(postsData)
+  feed = feed.ori(data)
 
   // Construct the site's tree of public resources to deploy.
   public = {
-    // About page
+    // About page uses the basic template.
     about.html = page.ori(@mdHtml(about.md))
 
-    // Assets (fonts, styles) and images
+    // Assets (fonts, styles) and images are included as is.
     assets
     images
 
@@ -37,15 +37,15 @@
     // The pages area breaks the posts into sets.
     pages =
       // Group the posts into sets of 10.
-      @paginate(postsData, 10)
-      // Turn each set of posts into a page with a `.html` extension.
+      @paginate(data, 10)
+      // Turn each set of posts into a page with an `.html` extension.
       → @mapFn({
         extension: "→html"
         value: multiPostPage.ori
       })
 
     // The posts area contains a page for each individual post.
-    posts = @map(postsData, singlePostPage.ori)
+    posts = @map(data, singlePostPage.ori)
 
     // Feeds
     feed.json = @json(feed)
