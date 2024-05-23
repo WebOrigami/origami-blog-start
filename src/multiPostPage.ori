@@ -6,7 +6,10 @@
     <h1>#pondlife</h1>
     <p>Dispatches from off the grid</p>
 
-    ${ @map(paginated/items, post.ori) }
+    ${
+      // List all the posts on this page.
+      @map(paginated/items, post.ori)
+    }
 
     <p>
       ${ @if(paginated/nextPage, =`

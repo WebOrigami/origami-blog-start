@@ -1,9 +1,9 @@
 // Origami program to generate a blog from a folder of markdown files
 {
   // Define a pipeline that starts with the folder of markdown files and applies
-  // a series of transformations to process them into a form that's ready to be
+  // a series of transformations to process them into data that's ready to be
   // displayed on the various types of pages.
-  processed = content
+  postsData = markdown
     // Convert the markdown to HTML, changing the extension from `md` to `html`.
     → @mapFn(@mdHtml)
     // Add a `date` field parsed from the filename.
@@ -20,7 +20,7 @@
     → @reverse
 
   // Turn all the posts into a feed.
-  feed = feed.ori(processed)
+  feed = feed.ori(postsData)
 
   // Construct the site's tree of public resources to deploy.
   public = {
@@ -34,10 +34,10 @@
     // Use the first page of posts as the home page.
     index.html = pages/1.html
 
-    // The pages area breaks the posts into sets of 5 posts each.
+    // The pages area breaks the posts into sets.
     pages =
-      // Group the posts into sets of 5.
-      @paginate(processed, 5)
+      // Group the posts into sets of 10.
+      @paginate(postsData, 10)
       // Turn each set of posts into a page with a `.html` extension.
       → @mapFn({
         extension: "→html"
@@ -45,7 +45,7 @@
       })
 
     // The posts area contains a page for each individual post.
-    posts = @map(processed, singlePostPage.ori)
+    posts = @map(postsData, singlePostPage.ori)
 
     // Feeds
     feed.json = @json(feed)
