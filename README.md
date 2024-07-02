@@ -51,9 +51,9 @@ The `src` folder contains the Origami program that makes the blog work. The main
 <img src="docs/site.svg">
 
 - Each blog post starts as a markdown file in the `markdown` folder.
-- A series of transformations turns each post into an HTML page in the `posts` area.
-- Posts are grouped into pages of 10 posts each in the `pages` area.
-- The index page shows the same content as `pages/1.html`.
+- A series of transformations turns each post into data that's ready to show in HTML.
+- The index page shows all the posts.
+- The `posts` area shows each post on its own page.
 - Feeds are created for the posts in RSS and JSON Feed format.
 
 The [source for a sample blog created from this project](https://github.com/WebOrigami/pondlife) contains additional details about how the blog program works.

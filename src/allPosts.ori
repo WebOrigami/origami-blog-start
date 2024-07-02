@@ -1,0 +1,18 @@
+// A page showing all the posts
+(posts) => page.ori({
+  title: siteInfo.yaml/title
+  area: "home"
+  @text: `
+    <h1>${ siteInfo.yaml/title }</h1>
+    <p>${ siteInfo.yaml/description }</p>
+    ${
+      // Turn each post into HTML.
+      @map(posts, post.ori)
+    }
+    <footer>
+      <a href="/rss.xml">RSS feed</a>
+      <a href="/feed.json">JSON feed</a>
+      <a href="https://github.com/WebOrigami/origami-blog-start">View source</a>
+    </footer>
+  `
+})
