@@ -15,5 +15,5 @@
 
   // Feeds
   feed.json = @json(feed.ori)
-  rss.xml = @rss(feed.ori)
+  feed.xml = @rss(feed.ori)
 }
