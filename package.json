@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@weborigami/origami": "0.0.59"
+    "@weborigami/origami": "0.0.62"
   },
   "engines": {
     "node": "^22.0.0"
@@ -13,7 +13,7 @@
     "projectType": "generated_static"
   },
   "scripts": {
-    "build": "rm -rf build; ori @copy src/site.ori, @mkdir/build",
+    "build": "ori @copy src/site.ori, @clean @mkdir/build",
     "docs": "ori '@svg docs/diagram.ori, { createLinks: false }' > docs/site.svg",
     "start": "ori @serve @watch src, =@debug site.ori"
   }
