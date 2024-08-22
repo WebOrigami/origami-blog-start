@@ -8,12 +8,16 @@
   images
 
   // Display all the posts on the index page.
-  index.html = allPosts.ori(postData.ori)
+  index.html = allPosts.ori(postData)
+
+  // The complete set of posts -- only used internally
+  (postData): postData.ori/
 
   // The posts area contains a page for each individual post.
-  posts = @map(postData.ori, singlePostPage.ori)
+  posts = @map(postData, singlePostPage.ori)
 
   // Feeds
-  feed.json = @json(feed.ori)
-  feed.xml = @rss(feed.ori)
+  (feed) = feed.ori(postData)   // Internal feed representation
+  feed.json = @json(feed)       // JSON Feed
+  feed.xml = @rss(feed)         // RSS
 }
