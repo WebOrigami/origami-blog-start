@@ -14,7 +14,7 @@
   (postData): postData.ori/
 
   // The posts area contains a page for each individual post.
-  posts = @map(postData, singlePostPage.ori)
+  posts/ = @map(postData, singlePostPage.ori)
 
   // Feeds
   (feed) = feed.ori(postData)   // Internal feed representation
