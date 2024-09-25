@@ -15,6 +15,6 @@
   "scripts": {
     "build": "ori @copy src/site.ori, @clean @mkdir/build",
     "docs": "ori '@svg docs/diagram.ori, { createLinks: false }' > docs/site.svg",
-    "start": "ori @serve @watch src, =@debug site.ori"
+    "start": "ori @serve @watch src, =@debug src/site.ori"
   }
 }
