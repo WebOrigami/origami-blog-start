@@ -1,16 +1,16 @@
 // A page showing a single post
 (post, key, tree) => page.ori({
   title: post/title
-  @text: @indent`
+  @text: indent`
     ${ postFragment.ori(post, key) }
     <p>
-      ${ @if(post/previousKey, =@indent`
+      ${ if(post/previousKey, =indent`
         <a class="previous" href="${ post/previousKey }">Previous: ${ tree(post/previousKey)/title }</a>
         &nbsp;
       `) }
-      ${ @if(post/nextKey, =@indent`
+      ${ if(post/nextKey, =indent`
         <a class="next" href="${ post/nextKey }">Next: ${ tree(post/nextKey)/title }</a>
-      `, =@indent`
+      `, =indent`
         <a class="next" href="/">
           Back to home
         </a>

@@ -2,12 +2,12 @@
 (posts) => page.ori({
   title: siteInfo.yaml/title
   area: "home"
-  @text: @indent`
+  @text: indent`
     <h1>${ siteInfo.yaml/title }</h1>
     <p>${ siteInfo.yaml/description }</p>
     ${
       // Turn each post into HTML.
-      @map(posts, postFragment.ori)
+      map(posts, postFragment.ori)
     }
     <footer>
       <a href="/feed.xml">RSS feed</a>

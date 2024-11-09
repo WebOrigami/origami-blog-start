@@ -13,8 +13,8 @@
     "projectType": "generated_static"
   },
   "scripts": {
-    "build": "ori @copy src/site.ori, @clean @mkdir/build",
-    "docs": "ori '@svg docs/diagram.ori, { createLinks: false }' > docs/site.svg",
-    "start": "ori @serve @watch src, =@debug src/site.ori"
+    "build": "ori copy src/site.ori, clean files:build",
+    "docs": "ori 'svg docs/diagram.ori, { createLinks: false }' > docs/site.svg",
+    "start": "ori serve watch src, =debug src/site.ori"
   }
 }

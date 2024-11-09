@@ -1,19 +1,19 @@
 // Origami program to generate a blog from a folder of markdown files
 {
   // About page uses the basic template.
-  about.html = page.ori(@mdHtml(about.md))
+  about.html = page.ori(mdHtml(about.md))
 
   // Assets (fonts, styles) and images are included as is.
   assets
   images
 
   // Feeds render the data in JSON Feed and RSS formats.
-  feed.json = @json(feed.ori(data.ori))
-  feed.xml = @rss(feed.ori(data.ori))
+  feed.json = json(feed.ori(data.ori))
+  feed.xml = rss(feed.ori(data.ori))
 
   // Display all the posts on the index page.
   index.html = allPosts.ori(data.ori)
 
   // The posts area contains a page for each individual post.
-  posts/ = @map(data.ori, singlePostPage.ori)
+  posts/ = map(data.ori, singlePostPage.ori)
 }
