@@ -3,15 +3,12 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@weborigami/origami": "0.0.70"
+    "@weborigami/origami": "0.1.0"
   },
   "engines": {
     "node": "^22.0.0"
   },
   "license": "MIT",
-  "glitch": {
-    "projectType": "generated_static"
-  },
   "scripts": {
     "build": "ori copy src/site.ori, clear files:build",
     "docs": "ori 'svg docs/diagram.ori, { createLinks: false }' > docs/site.svg",
